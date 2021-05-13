@@ -16,10 +16,11 @@
       (* 100000000000 100))))
 
 (defn get-logger [nm]
-  (if (>= (cljs-version->value *clojurescript-version*)
+  #_(if (>= (cljs-version->value *clojurescript-version*)
           (cljs-version->value "1.10.844"))
     (goog.debug.Logger. nm)
-    (.call glog/getLogger nil nm)))
+    (.call glog/getLogger nil nm))
+ (goog.debug.Logger. nm))
 
 (defn error [log msg-ex]
   (.call glog/error nil log msg-ex))
